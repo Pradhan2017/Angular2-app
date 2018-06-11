@@ -1,0 +1,20 @@
+<h2>Ninja Listing</h2>
+<form id="filter">
+    <label>Filter ninjas by name:</label>
+    <input type="text" [(ngModel)]="term" name="term">
+</form>
+<ul id="ninja-listing">
+  <li *ngFor="let ninja of ninjas | filter:term">
+      <div class="single-ninja">
+          <!-- Belt Color -->
+          <span [ngStyle]="{background: ninja.belt}">{{ninja.belt}} belt</span>
+          <!-- Ninja Name -->
+          <h3>{{ninja.name}}</h3>
+      </div>
+  </li>
+</ul>
+<form id="add-ninja">
+    <input type="text" [(ngModel)]="name" name="name" />
+    <input type="text" [(ngModel)]="belt" name="belt" />
+    <button (click)="fbPostData(name, belt)">Add Ninjas</button>
+</form>
